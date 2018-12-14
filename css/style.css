@@ -1,0 +1,268 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    background: #fff;
+    background-size: 100%;
+}
+
+/*
+ backgrounds 
+.day { background:#000; }
+.night { background: #000; }
+*/
+
+/*clock*/
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+#clock {
+    font-family: 'Share Tech Mono', monospace;
+    text-align: center;
+    position: absolute;
+    left: 4%;
+    top: 4%;
+    /*
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    */
+    /*
+    color: #daf6ff;
+    text-shadow: 0 0 20px #0aafe6, 0 0 20px rgba(10, 175, 230, 0);
+    */
+}
+#clock .time {
+    letter-spacing: 0.05em;
+    font-size: 20px;
+    padding: 5px 0;
+}
+#clock .date {
+    letter-spacing: 0.1em;
+    font-size: 14px;
+}
+
+/*window*/
+
+.wrap {
+    width: 100%;
+    min-height: 100vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    /*    padding: 50px 0;*/
+}
+
+.window {
+	width: 40vh;
+    height: 90vh;
+    border: 4px solid #000;
+    border-bottom: 12px solid #000;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-shadow: 0 5px 0 1px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 5px 0 1px rgba(0, 0, 0, 0.15);
+    /* background: #fff; */
+}
+
+.window_outer {
+    overflow: hidden;
+    background-color: #fff;
+    padding: 1vh;
+}
+
+.window > div {
+    height: 50%;
+    width: 100%;
+    position: relative;
+}
+
+.window > div:first-child {
+    border-bottom: 4px solid #000;
+    -webkit-box-shadow: 0 3px 0 1px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 3px 0 1px rgba(0, 0, 0, 0.15);
+}
+
+/*bubble*/
+
+.bubble {
+    font-size: 14px;
+    font-family: 'Share Tech Mono', monospace;
+}
+
+.bubble {
+    position: fixed;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin: 10px 9px 29px 6px;
+    text-align: center;
+    font-weight: 700;
+    background-color: #fff;
+    color: #000;
+    padding: 5px;
+    box-shadow: 0 -3px #fff, 0 -6px #000, 3px 0 #fff, 3px -3px #000, 6px 0 #000, 0 3px #fff, 0 6px #000, -3px 0 #fff, -3px 3px #000, -6px 0 #000, -3px -3px #000, 3px 3px #000, 3px 9px #aaa, 6px 6px #aaa, 9px 3px #aaa;
+    -webkit-transform: translateX(-50%) ;
+    -moz-transform: translateX(-50%) ;
+    -ms-transform: translateX(-50%) ;
+    -o-transform: translateX(-50%) ;
+    transform: translateX(-50%) ;
+    box-sizing: border-box;
+}
+
+#sephora {  
+    width: auto;
+    max-width: 120px;
+    left: 42vw; 
+}
+
+#yamibuy {
+    width: auto;
+    max-width: 130px;
+    left: 40vw; 
+}
+
+#googledoc {
+    width: auto;
+    max-width: 140px;
+    left: 42vw; 
+}
+
+#wechat {
+    width: auto;
+    max-width: 130px;
+    left: 42vw; 
+}
+
+#imessage {
+    width: auto;
+    max-width: 140px;
+    left: 42vw;  
+}
+
+#coding {
+    width: auto;
+    max-width: 120px;
+    left: 42vw; 
+}
+
+#codingspan {
+    width: auto;
+    max-width: 134px;
+    left: 42vw;     
+}
+
+#photoshop {
+    width: auto;
+    max-width: 120px;
+    left: 41vw;  
+}
+
+#slamdunk {
+    width: auto;
+    max-width: 220px;
+    right: 40vh; 
+    top: 80vh;
+}
+
+#sleep {
+    width: auto;
+    max-width: 260px;
+    right: 56vh; 
+    top: 82vh;
+}
+
+#makeup {
+    width: auto;
+    max-width: 80px;
+    left: 40vw;  
+    top: 66vh;
+}
+
+#snack {
+    width: auto;
+    max-width: 80px;
+    left: 41vw; 
+    top: 50vh;
+}
+
+#mirror {
+    width: auto;
+    max-width: 40px;
+    left: 50vw;  
+    top: 30vh;
+}
+
+#phonegame {
+    width: auto;
+    max-width: 120px;
+    right: 31vw; 
+    top: 74vh;
+}
+
+#takephoto {
+    width: auto;
+    max-width: 120px;
+    left: 41vw; 
+    top:52vh;
+}
+
+#vitamin {
+    width: auto;
+    max-width: 72px;
+    left: 40vw; 
+    top:52vh;
+}
+
+#tv {
+    width: auto;
+    max-width: 260px;
+    right: 36vh; 
+    top: 82vh;
+}
+
+#thesims {
+    width: auto;
+    max-width: 260px;
+    right: 36vh; 
+    top: 82vh;
+}
+
+#lego {
+    width: auto;
+    max-width: 90px;
+    right: 60vh; 
+    top: 64vh;
+}
+
+/* backgrounds */
+.day { 
+	background: #fff; 
+	color: #000;
+}
+.night { 
+	background: #000; 
+	color: #fff;
+}
+
