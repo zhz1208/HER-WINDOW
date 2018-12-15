@@ -85,7 +85,7 @@ p {
 #window_outer {
     overflow: hidden;
     background-color: #fff;
-    padding: 1vh;
+    padding: 0vh;
 }
 
 #window > div {
