@@ -34,6 +34,32 @@ $(function() {
         return (zero + num).slice(-digit);
     }
 
+    // clip bubble
+    //$(".bubble").hide();
+    var window_offset = $("#window").offset(); 
+    var window_width = $("#window").outerWidth(true);
+    var window_height = $("#window").outerHeight(true);
+    var window_right = window_offset.left + window_width;
+    var window_bottom = window_offset.top + window_height;
+    $(".bubble").show();
+    $(".bubble").each(function() {
+        var bubble_offset = $(this).offset();
+        var bubble_width = $(this).outerWidth(true);
+        var bubble_height = $(this).outerHeight(true);
+        var bubble_right = bubble_offset.left + bubble_width;
+        var bubble_bottom = bubble_offset.top + bubble_height;
+        var bubble_margin_top = parseInt($(this).css("marginTop").replace('px', ''));
+        var bubble_margin_bottom = parseInt($(this).css("marginBottom").replace('px', ''));
+        var bubble_margin_left = parseInt($(this).css("marginLeft").replace('px', ''));
+        var bubble_margin_right = parseInt($(this).css("marginRight").replace('px', ''));
+        var clip_left = window_offset.left > bubble_offset.left ? window_offset.left - bubble_offset.left : -bubble_margin_left;
+        var clip_top = window_offset.top > bubble_offset.top ? window_offset.top - bubble_offset.top : -bubble_margin_top;
+        var clip_right = window_right < bubble_right ? bubble_width - (bubble_right - window_right) : bubble_width;
+        var clip_bottom = window_bottom < bubble_bottom ? bubble_height - (bubble_bottom - window_bottom) : bubble_height;
+        $(this).css('clip', 'rect(' + clip_top + 'px,' + clip_right + 'px,' + clip_bottom + 'px,' + clip_left + 'px)'); 
+        $(this).hide();
+    });
+
     //    bubbles appear by time
 
     //    //    appearing time
@@ -108,7 +134,7 @@ $(function() {
 
                 console.log(timePeriods[activity][i]);
                 if (now < startTime) {
-                    console.log("now < startTime");
+                    console.log(activity + ": now < startTime");
                     setTimeout(function(){
                         console.log("timeout");
                         $('#' + activity).show();
@@ -118,7 +144,7 @@ $(function() {
                         }, endTime - startTime);
                     }, startTime - now);
                 } else if (now < endTime) {
-                    console.log("startTime <= now < endTime");
+                    console.log(activity + ": startTime <= now < endTime");
                     $('#' + activity).show();
                     setTimeout(function(){
                         $('#' + activity).hide();
@@ -142,30 +168,5 @@ $(function() {
         document.body.className = "day";
     }
 
-    // clip bubble
-    //$(".bubble").hide();
-    var window_offset = $("#window").offset(); 
-    var window_width = $("#window").outerWidth(true);
-    var window_height = $("#window").outerHeight(true);
-    var window_right = window_offset.left + window_width;
-    var window_bottom = window_offset.top + window_height;
-    $(".bubble").show();
-    $(".bubble").each(function() {
-        var bubble_offset = $(this).offset();
-        var bubble_width = $(this).outerWidth(true);
-        var bubble_height = $(this).outerHeight(true);
-        var bubble_right = bubble_offset.left + bubble_width;
-        var bubble_bottom = bubble_offset.top + bubble_height;
-        var bubble_margin_top = parseInt($(this).css("marginTop").replace('px', ''));
-        var bubble_margin_bottom = parseInt($(this).css("marginBottom").replace('px', ''));
-        var bubble_margin_left = parseInt($(this).css("marginLeft").replace('px', ''));
-        var bubble_margin_right = parseInt($(this).css("marginRight").replace('px', ''));
-        var clip_left = window_offset.left > bubble_offset.left ? window_offset.left - bubble_offset.left : -bubble_margin_left;
-        var clip_top = window_offset.top > bubble_offset.top ? window_offset.top - bubble_offset.top : -bubble_margin_top;
-        var clip_right = window_right < bubble_right ? bubble_width - (bubble_right - window_right) : bubble_width;
-        var clip_bottom = window_bottom < bubble_bottom ? bubble_height - (bubble_bottom - window_bottom) : bubble_height;
-        $(this).css('clip', 'rect(' + clip_top + 'px,' + clip_right + 'px,' + clip_bottom + 'px,' + clip_left + 'px)'); 
-        $(this).hide();
-    });
 });
 

@@ -237,8 +237,8 @@ p {
 
 #tv {
     width: auto;
-    max-width: 260px;
-    right: 36vh; 
+    max-width: 220px;
+    right: 39vh; 
     top: 82vh;
 }
 
@@ -252,7 +252,7 @@ p {
 #lego {
     width: auto;
     max-width: 90px;
-    right: 60vh; 
+    right: 61vh; 
     top: 64vh;
 }
 
