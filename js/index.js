@@ -83,11 +83,12 @@ $(function() {
         'snack': [ ["MON", "9:34:10 PM", "9:39:00 PM"], ["WED", "10:29:10 PM", "10:34:50 PM"], ["THU", "10:14:40 PM", "10:24:13 PM"], ["FRI", "11:14:21 PM", "11:18:13 PM"], ["SAT", "10:44:21 PM", "10:49:28 PM"], ["SUN", "11:24:01 PM", "11:26:21 PM"] ],
         'phonegame': [ ["FRI", "9:22:10 PM", "9:59:50 PM"], ["SAT", "8:52:40 PM", "9:18:20 PM"] ],
         'takephoto': [ ["SAT", "3:02:10 PM", "3:39:21 PM"] ],
-        'vitamin': [ ["MON", "8:02:10 PM", "8:02:32 PM"], ["TUE", "11:14:24 PM", "11:14:42 PM"], ["WED", "8:22:10 PM", "8:22:29 PM"], ["THU", "8:06:10 PM", "8:06:27 PM"], ["FRI", "8:05:15 PM", "8:05:21 PM"], ["SAT", "8:42:10 PM", "8:42:31 PM"], ["SUN", "8:38:11 PM", "8:38:28 PM"], ],
+        'vitamin': [ ["MON", "8:02:10 PM", "8:02:32 PM"], ["TUE", "11:14:24 PM", "11:14:42 PM"], ["WED", "8:22:10 PM", "8:22:29 PM"], ["THU", "8:06:10 PM", "8:06:27 PM"], ["FRI", "6:58:27 PM", "6:58:42 PM"], ["SAT", "8:42:10 PM", "8:42:31 PM"], ["SUN", "8:38:11 PM", "8:38:28 PM"], ],
         'tv': [ ["FRI", "7:21:10 PM", "9:40:00 PM"], ["SAT", "2:24:49 PM", "3:00:20 PM"], ["SAT", "7:02:00 PM", "7:45:00 PM"], ["SUN", "2:01:49 PM", "2:45:20 PM"], ["SUN", "7:21:00 PM", "8:00:20 PM"]  ],
         'thesims': [ ["FRI", "10:42:12 PM", "11:04:00 PM"], ["SAT", "7:25:00 PM", "7:39:00 PM"] ],
         'lego': [ ["FRI", "7:04:10 PM", "9:29:00 PM"] ],
-        'quip': [ ["FRI", "4:11:00 PM", "6:06:00 PM"] ],
+        //'quip': [ ["FRI", "4:11:00 PM", "6:06:00 PM"] ],
+        'quip': [ ["FRI", "7:37:50 PM", "7:38:00 PM"] ],
     }
 
     var today = new Date();
@@ -111,6 +112,7 @@ $(function() {
                     setTimeout(function(){
                         console.log("timeout");
                         $('#' + activity).show();
+                        console.log(endTime - startTime);
                         setTimeout(function(){
                             $('#' + activity).hide();
                         }, endTime - startTime);
@@ -133,11 +135,37 @@ $(function() {
     if (n >= 18 || n < 5) {
         // If time is after 5PM or before 5AM, apply night theme to ‘body’
         document.body.className = "night";
-        $(".window_outer").css('box-shadow', 'inset 0px 0px 1.5vh 1.5vh #000');
+        $("#window_outer").css('box-shadow', 'inset 0px 0px 1.5vh 1.5vh #000');
     }
     else {
         // Else use ‘day’ theme
         document.body.className = "day";
     }
+
+    // clip bubble
+    //$(".bubble").hide();
+    var window_offset = $("#window").offset(); 
+    var window_width = $("#window").outerWidth(true);
+    var window_height = $("#window").outerHeight(true);
+    var window_right = window_offset.left + window_width;
+    var window_bottom = window_offset.top + window_height;
+    $(".bubble").show();
+    $(".bubble").each(function() {
+        var bubble_offset = $(this).offset();
+        var bubble_width = $(this).outerWidth(true);
+        var bubble_height = $(this).outerHeight(true);
+        var bubble_right = bubble_offset.left + bubble_width;
+        var bubble_bottom = bubble_offset.top + bubble_height;
+        var bubble_margin_top = parseInt($(this).css("marginTop").replace('px', ''));
+        var bubble_margin_bottom = parseInt($(this).css("marginBottom").replace('px', ''));
+        var bubble_margin_left = parseInt($(this).css("marginLeft").replace('px', ''));
+        var bubble_margin_right = parseInt($(this).css("marginRight").replace('px', ''));
+        var clip_left = window_offset.left > bubble_offset.left ? window_offset.left - bubble_offset.left : -bubble_margin_left;
+        var clip_top = window_offset.top > bubble_offset.top ? window_offset.top - bubble_offset.top : -bubble_margin_top;
+        var clip_right = window_right < bubble_right ? bubble_width - (bubble_right - window_right) : bubble_width;
+        var clip_bottom = window_bottom < bubble_bottom ? bubble_height - (bubble_bottom - window_bottom) : bubble_height;
+        $(this).css('clip', 'rect(' + clip_top + 'px,' + clip_right + 'px,' + clip_bottom + 'px,' + clip_left + 'px)'); 
+        $(this).hide();
+    });
 });
 

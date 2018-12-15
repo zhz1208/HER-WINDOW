@@ -64,7 +64,7 @@ p {
     /*    padding: 50px 0;*/
 }
 
-.window {
+#window {
 	width: 40vh;
     height: 90vh;
     border: 4px solid #000;
@@ -82,19 +82,19 @@ p {
     /* background: #fff; */
 }
 
-.window_outer {
+#window_outer {
     overflow: hidden;
     background-color: #fff;
     padding: 1vh;
 }
 
-.window > div {
+#window > div {
     height: 50%;
     width: 100%;
     position: relative;
 }
 
-.window > div:first-child {
+#window > div:first-child {
     border-bottom: 4px solid #000;
     -webkit-box-shadow: 0 3px 0 1px rgba(0, 0, 0, 0.15);
     box-shadow: 0 3px 0 1px rgba(0, 0, 0, 0.15);
