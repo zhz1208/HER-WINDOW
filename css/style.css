@@ -256,6 +256,12 @@ p {
     top: 64vh;
 }
 
+#quip {
+    width: auto;
+    max-width: 140px;
+    left: 42vw; 
+}
+
 /* backgrounds */
 .day { 
 	background: #fff; 
